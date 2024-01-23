@@ -1,97 +1,16 @@
+const moves = document.getElementById("moves-count");
+const timeValue = document.getElementById("time");
+const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
+const gameContainer = document.querySelector(".game-container");
+const result = document.getElementById("result");
+const controls = document.querySelector(".controls-container");
+let cards;
+let interval;
+let firstCard = false;
+let secondCard = false;
 
-const koreanList = document.getElementById("koreanWordList");
-const englishList = document.getElementById("englishWordList");
-const btn1 = document.getElementById('button1');
-const number = 12;
-let kVocabArr =[];
-let eVocabArr =[];
-let wordItems = [];
-
-
-for (let i = 1; i <= number; i++) {
-  const koreanInput = document.createElement("input");
-  koreanInput.type = "text";
-  koreanInput.placeholder = `${i} Korean vocabulary`;
-  koreanInput.classList.add("koreanWordList");
-
-  const englishInput = document.createElement("input");
-  englishInput.type = "text";
-  englishInput.placeholder = `${i} English vocabulary`;
-  englishInput.classList.add("englishWordList");
-
-  const koreanDiv = document.createElement("div");
-  koreanDiv.id = "kword";
-  koreanDiv.appendChild(koreanInput);
-
-  const englishDiv = document.createElement("div");
-  englishDiv.id = "eword";
-  englishDiv.appendChild(englishInput);
-
-  koreanList.appendChild(koreanDiv);
-  englishList.appendChild(englishDiv);
-}
-/*
-  <div id="kword">
-        <input class="koreanWordList" type="text" placeholder="Enter text">
-    </div>
-     <div id="eword">
-        <input class="englishWordList" type="text" placeholder="Enter text">
-    </div>
-*/
-
-function vocabulary () {
-  kVocabArr = [];
-  eVocabArr = [];
-
-  const koreanWords = koreanList.querySelectorAll(".koreanWordList");
-  const englishWords = englishList.querySelectorAll(".englishWordList");
-
-  for ( let i = 0 ; i < number ; i ++) {
-    kVocabArr.push(koreanWords[i].value);
-    eVocabArr.push(englishWords[i].value);
-  }
-  if (NoneEmpty(kVocabArr) && NoneEmpty(eVocabArr) == true){
-    createItemsArray(kVocabArr, eVocabArr);
-    return 1;
-  } 
-}
-
-function NoneEmpty(array) {
-  for(var i=0; i<number; i++) {
-    if(array[i] === "") {
-      alert("fill in the blank");
-      return false
-    };
-  }
-  return true;
-}
-
-function createItemsArray(kVocabArr, eVocabArr) {
-  for (let i = 0; i < kVocabArr.length; i++) {
-    wordItems.push({
-      Vocab: i + 1,
-      English: eVocabArr[i],
-      Korean: kVocabArr[i]
-    });
-  }
-  console.log (wordItems);
-  return wordItems;
-}
-const wrapper = document.getElementsByClassName('wrapper')[0];
-const startWrapper = document.getElementsByClassName('controls-container')[0];
-const wordListWrapper = document.querySelector(".wordListWrapper");
-btn1.addEventListener('click', function() {
-  vocabulary(); 
-  wordListWrapper.classList.add("hide");
-  startWrapper.classList.remove('hide');
-  wrapper.classList.remove("hide");
-});
-
-
-/* 
-game 
-
-
+//Items array
 const items = [
   { name: "bee", image: "bee.png" },
   { name: "crocodile", image: "crocodile.png" },
@@ -106,39 +25,6 @@ const items = [
   { name: "cockatoo", image: "cockatoo.png" },
   { name: "toucan", image: "toucan.png" },
 ];
-
-const items = [
-  {Vocab: 1, English: 'egg', Korean: '달걀'},
-  {Vocab: 2, English: 'kiwi', Korean: '키위'}, 
-  {Vocab: 3, English: 'juice', Korean: '주스'},
-  {Vocab: 4, English: 'tomato', Korean: '토마토'},
-  {Vocab: 5, English: 'potato', Korean: '감자'},
-  {Vocab: 6, English: 'milk', Korean: '우유'},
-  {Vocab: 7, English: 'jam', Korean: '잼'},
-  {Vocab: 8, English: 'coffee', Korean: '커피'},
-  {Vocab: 9, English: 'water', Korean: '물'},
-  {Vocab: 10, English: 'fruit', Korean: '과일'},
-  {Vocab: 11, English: 'vegi', Korean: '야채'},
-  {Vocab: 12, English: 'snack', Korean: '과자'},
-];
-
-*/
-
-const moves = document.getElementById("moves-count");
-const timeValue = document.getElementById("time");
-const startButton = document.getElementById("start");
-const stopButton = document.getElementById("stop");
-const gameContainer = document.querySelector(".game-container");
-const result = document.getElementById("result");
-const controls = document.querySelector(".controls-container");
-let cards;
-let interval;
-let firstCard = false;
-let secondCard = false;
-
-//Items array
-const items = [...wordItems];
-console.log(`items are not:${items}`);
 
 //Initial Time
 let seconds = 0,
@@ -198,7 +84,7 @@ const matrixGenerator = (cardValues, size = 4) => {
         data-card-values is a custom attribute which stores the names of the cards to match later
       */
     gameContainer.innerHTML += `
-     <div class="card-container" data-card-value="${cardValues[i].Vocab}">
+     <div class="card-container" data-card-value="${cardValues[i].name}">
         <div class="card-before">?</div>
         <div class="card-after">
         <img src="${cardValues[i].image}" class="image"/></div>
