@@ -5,7 +5,6 @@ const btn1 = document.getElementById('button1');
 const number = 12;
 let kVocabArr =[];
 let eVocabArr =[];
-let wordItems = [];
 
 
 for (let i = 1; i <= number; i++) {
@@ -66,7 +65,10 @@ function NoneEmpty(array) {
   return true;
 }
 
+let items; 
+
 function createItemsArray(kVocabArr, eVocabArr) {
+  let wordItems = [];
   for (let i = 0; i < kVocabArr.length; i++) {
     wordItems.push({
       Vocab: i + 1,
@@ -75,8 +77,10 @@ function createItemsArray(kVocabArr, eVocabArr) {
     });
   }
   console.log (wordItems);
-  return wordItems;
+  items = [...wordItems]
+  return items;
 }
+
 const wrapper = document.getElementsByClassName('wrapper')[0];
 const startWrapper = document.getElementsByClassName('controls-container')[0];
 const wordListWrapper = document.querySelector(".wordListWrapper");
@@ -86,43 +90,6 @@ btn1.addEventListener('click', function() {
   startWrapper.classList.remove('hide');
   wrapper.classList.remove("hide");
 });
-
-
-/* 
-game 
-
-
-const items = [
-  { name: "bee", image: "bee.png" },
-  { name: "crocodile", image: "crocodile.png" },
-  { name: "macaw", image: "macaw.png" },
-  { name: "gorilla", image: "gorilla.png" },
-  { name: "tiger", image: "tiger.png" },
-  { name: "monkey", image: "monkey.png" },
-  { name: "chameleon", image: "chameleon.png" },
-  { name: "piranha", image: "piranha.png" },
-  { name: "anaconda", image: "anaconda.png" },
-  { name: "sloth", image: "sloth.png" },
-  { name: "cockatoo", image: "cockatoo.png" },
-  { name: "toucan", image: "toucan.png" },
-];
-
-const items = [
-  {Vocab: 1, English: 'egg', Korean: '달걀'},
-  {Vocab: 2, English: 'kiwi', Korean: '키위'}, 
-  {Vocab: 3, English: 'juice', Korean: '주스'},
-  {Vocab: 4, English: 'tomato', Korean: '토마토'},
-  {Vocab: 5, English: 'potato', Korean: '감자'},
-  {Vocab: 6, English: 'milk', Korean: '우유'},
-  {Vocab: 7, English: 'jam', Korean: '잼'},
-  {Vocab: 8, English: 'coffee', Korean: '커피'},
-  {Vocab: 9, English: 'water', Korean: '물'},
-  {Vocab: 10, English: 'fruit', Korean: '과일'},
-  {Vocab: 11, English: 'vegi', Korean: '야채'},
-  {Vocab: 12, English: 'snack', Korean: '과자'},
-];
-
-*/
 
 const moves = document.getElementById("moves-count");
 const timeValue = document.getElementById("time");
@@ -137,8 +104,8 @@ let firstCard = false;
 let secondCard = false;
 
 //Items array
-const items = [...wordItems];
-console.log(`items are not:${items}`);
+
+console.log(items);
 
 //Initial Time
 let seconds = 0,
@@ -182,6 +149,7 @@ const generateRandom = (size = 4) => {
     //once selected remove the object from temp array
     tempArray.splice(randomIndex, 1);
   }
+  
   return cardValues;
 };
 
@@ -197,13 +165,12 @@ const matrixGenerator = (cardValues, size = 4) => {
         after => back side (contains actual image);
         data-card-values is a custom attribute which stores the names of the cards to match later
       */
-    gameContainer.innerHTML += `
-     <div class="card-container" data-card-value="${cardValues[i].Vocab}">
-        <div class="card-before">?</div>
-        <div class="card-after">
-        <img src="${cardValues[i].image}" class="image"/></div>
-     </div>
-     `;
+        gameContainer.innerHTML += `
+        <div class="card-container" data-card-value="${cardValues[i].Korean}">
+           <div class="card-before">?</div>
+           <div class="card-after"><p>${cardValues[i].English}</p></div>
+        </div>
+        `;
   }
   //Grid
   gameContainer.style.gridTemplateColumns = `repeat(${size},auto)`;
