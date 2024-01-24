@@ -155,23 +155,25 @@ const generateRandom = (size = 4) => {
 
 const matrixGenerator = (cardValues, size = 4) => {
   gameContainer.innerHTML = "";
-  cardValues = [...cardValues, ...cardValues];
-  //simple shuffle
-  cardValues.sort(() => Math.random() - 0.5);
+  
+  cardValues.sort(()=> Math.random()-0.5);
+  
+  let shuffledKoreanCards = cardValues.map(card => ({...card, language: 'Korean'}));
+  let shuffledEnglishCards = cardValues.map(card=>({...card, language: 'English' }));
+  
+  let shuffledCards = [...shuffledEnglishCards, ...shuffledKoreanCards];
+  
+  shuffledCards.sort(() => Math.random() - 0.5);
+  
   for (let i = 0; i < size * size; i++) {
-    /*
-        Create Cards
-        before => front side (contains question mark)
-        after => back side (contains actual image);
-        data-card-values is a custom attribute which stores the names of the cards to match later
-      */
-        gameContainer.innerHTML += `
-        <div class="card-container" data-card-value="${cardValues[i].Korean}">
-           <div class="card-before">?</div>
-           <div class="card-after"><p>${cardValues[i].English}</p></div>
-        </div>
-        `;
+    gameContainer.innerHTML += `
+    <div class="card-container" data-card-value="${shuffledCards[i].Vocab}">
+       <div class="card-before">?</div>
+       <div class="card-after"><p>${shuffledCards[i].language === 'Korean' ? shuffledCards[i].Korean : shuffledCards[i].English}</p></div>
+    </div>
+  `;
   }
+
   //Grid
   gameContainer.style.gridTemplateColumns = `repeat(${size},auto)`;
 

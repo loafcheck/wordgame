@@ -1,5 +1,4 @@
 gameContainer.innerHTML = "";
-cardValues = [...cardValues, ...cardValues];
  /** cardValues= [
   {Vocab: 1, English: 'egg', Korean: '달걀'},
   {Vocab: 2, English: 'kiwi', Korean: '키위'}, 
@@ -20,18 +19,25 @@ cardValues = [...cardValues, ...cardValues];
 
 //simple shuffle
 cardValues.sort(() => Math.random() - 0.5);
+/**
+ * cardValues= [
+  {Vocab: 1, English: 'egg', Korean: '달걀'},
+  {Vocab: 2, English: 'kiwi', Korean: '키위'}, 
+  {Vocab: 8, English: 'coffee', Korean: '커피'},
+  {Vocab: 9, English: 'water', Korean: '물'},
+  {Vocab: 3, English: 'juice', Korean: '주스'},
+  {Vocab: 4, English: 'tomato', Korean: '토마토'},
+  {Vocab: 6, English: 'milk', Korean: '우유'},
+  {Vocab: 7, English: 'jam', Korean: '잼'},] 
+  cardValues.length = 8
+  
+ * 
+ */
 //이미 같은 세트 두개가 있으므로 순서만 랜덤하게 하면됨.
 //gameContainer 안에 같은이미지가 두번반복하게함. 
 //근데 나는 gameContainer 안에 8개는 한국어 8개는 영어가 필요함.
 
 for (let i = 0; i < size * size; i++) {
-  //2*2 = 4  
-  /*
-      Create Cards
-      before => front side (contains question mark)
-      after => back side (contains actual image);
-      data-card-values is a custom attribute which stores the names of the cards to match later
-    */
       gameContainer.innerHTML += `
       <div class="card-container" data-card-value="${cardValues[i].Vocab}">
          <div class="card-before">?</div>
