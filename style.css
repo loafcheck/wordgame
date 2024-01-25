@@ -1,34 +1,61 @@
 .prompt  {
-    width: 300px;
-    height: 500px;
-    background: black;
-    color: #FFA500;
+  width: 300px;
+  height: 500px;
+  background: black;
+  color: #FFA500;
 }
 
 input {
-    display: block;
-    margin: 10px;
+  display: block;
+  margin: 10px;
 }
 
+.wordListWrapper p {
+  font-size: 25px;
+  color: #ff3366; /* Choose a playful color */
+  font-family: 'Comic Sans MS', cursive; /* Use a playful font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+  letter-spacing: 2px; /* Increase letter spacing for a playful effect */
+  margin-top: 10px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition */
+}
+
+.wordListWrapper p:hover {
+  transform: scale(1.2); /* Scale the text on hover */
+}
 .wordListWrapper {
-    position: absolute;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10%;
-
+  background-image: url('assets/classroom.jpg');
+  background-size: cover;
+  background-position: center top;
+  position: absolute;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
-table, td, th{
 
-   border: 1px solid black;
-  }
+table, td, th{
+  font-size: 25px;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #ff3366; /* Choose a playful color */
+  font-family: 'Comic Sans MS', cursive; /* Use a playful font */
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 th input {
+  font-size: 20px;
+  color: #ff3366; /* Choose a playful color */
+  font-family: 'Comic Sans MS', cursive; /* Use a playful font */
+  border: 1px solid black;
+   border-radius: 5px;
     height: 1.5em;
 }
+
 .textbox {
-    height:1.5em;
+    height:3em;
 }
 
 .hide {
