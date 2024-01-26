@@ -1,11 +1,9 @@
-
 const koreanList = document.getElementById("koreanWordList");
 const englishList = document.getElementById("englishWordList");
 const btn1 = document.getElementById('button1');
 const number = 12;
 let kVocabArr =[];
 let eVocabArr =[];
-
 
 for (let i = 1; i <= number; i++) {
   const koreanInput = document.createElement("input");
