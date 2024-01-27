@@ -27,6 +27,21 @@ input {
   display: none;
 }
 
+#nextBtn {
+  font-size: 25px;
+  background-color:var(--primary-color);
+  color: white; /* Choose a playful color */
+  font-family: 'Comic Sans MS', cursive; /* Use a playful font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+  letter-spacing: 2px; /* Increase letter spacing for a playful effect */
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.9);
+}
+
 .wordListWrapper p {
   font-size: 25px;
   background-color:var(--primary-color);

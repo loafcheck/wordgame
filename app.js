@@ -1,40 +1,71 @@
 const koreanList = document.getElementById("koreanWordList");
 const englishList = document.getElementById("englishWordList");
 const btn1 = document.getElementById('button1');
+const nextBtn = document.getElementById('nextBtn');
+const table = document.getElementById('table');
+const language1Input = document.getElementById('language1');
+const language2Input = document.getElementById('language2');
+const language1Header = document.getElementById('language1Header');
+const language2Header = document.getElementById('language2Header');
+const lang1Label = document.getElementById('lang1Label');
+const lang2Label = document.getElementById('lang2Label');
 const number = 12;
 let kVocabArr =[];
 let eVocabArr =[];
 
-for (let i = 1; i <= number; i++) {
-  const koreanInput = document.createElement("input");
-  koreanInput.type = "text";
-  koreanInput.placeholder = `${i} Korean vocabulary`;
-  koreanInput.classList.add("koreanWordList");
-
-  const englishInput = document.createElement("input");
-  englishInput.type = "text";
-  englishInput.placeholder = `${i} English vocabulary`;
-  englishInput.classList.add("englishWordList");
-
-  const koreanDiv = document.createElement("div");
-  koreanDiv.id = "kword";
-  koreanDiv.appendChild(koreanInput);
-
-  const englishDiv = document.createElement("div");
-  englishDiv.id = "eword";
-  englishDiv.appendChild(englishInput);
-
-  koreanList.appendChild(koreanDiv);
-  englishList.appendChild(englishDiv);
+nextBtn.addEventListener('click', function(){
+  if (language1Input.value.trim() === '' || language2Input.value.trim() === '') {
+    alert('Please fill in both language fields.');
+    return; // Stop the event listener execution
 }
-/*
-  <div id="kword">
-        <input class="koreanWordList" type="text" placeholder="Enter text">
-    </div>
-     <div id="eword">
-        <input class="englishWordList" type="text" placeholder="Enter text">
-    </div>
-*/
+
+  table.classList.remove('hide');
+  btn1.classList.remove('hide');
+  nextBtn.classList.add('hide');
+
+  language1Header.textContent = language1Input.value;
+  language2Header.textContent = language2Input.value;
+
+  for (let i = 1; i <= number; i++) {
+
+    const labelValue1 = `${language1Input.value} vocabulary`;
+    const labelValue2 = `${language2Input.value} vocabulary`;
+  
+    const koreanInput = document.createElement("input");
+    koreanInput.type = "text";
+    koreanInput.placeholder =  `${i} ${labelValue1}`;;
+    koreanInput.classList.add("koreanWordList");
+  
+    const englishInput = document.createElement("input");
+    englishInput.type = "text";
+    englishInput.placeholder = `${i} ${labelValue2}`;
+    englishInput.classList.add("englishWordList");
+  
+    const koreanDiv = document.createElement("div");
+    koreanDiv.id = "kword";
+    koreanDiv.appendChild(koreanInput);
+  
+    const englishDiv = document.createElement("div");
+    englishDiv.id = "eword";
+    englishDiv.appendChild(englishInput);
+  
+    koreanList.appendChild(koreanDiv);
+    englishList.appendChild(englishDiv);
+  }
+
+})
+
+
+btn1.addEventListener('click', function() {
+  const vocabFilled = vocabulary();
+  if(!vocabFilled) {
+    return;
+  }
+  wordListWrapper.classList.add("hide");
+  startWrapper.classList.remove('hide');
+  wrapper.classList.remove("hide");
+});
+
 
 function vocabulary () {
   kVocabArr = [];
@@ -47,18 +78,19 @@ function vocabulary () {
     kVocabArr.push(koreanWords[i].value);
     eVocabArr.push(englishWords[i].value);
   }
-  if (NoneEmpty(kVocabArr) && NoneEmpty(eVocabArr) == true){
-    createItemsArray(kVocabArr, eVocabArr);
-    return 1;
-  } 
+  if (!NoneEmpty(kVocabArr) || !NoneEmpty(eVocabArr)){
+    
+    return false;
+  }
+  createItemsArray(kVocabArr, eVocabArr);
+  return true;
 }
-
 function NoneEmpty(array) {
   for(var i=0; i<number; i++) {
     if(array[i] === "") {
       alert("fill in the blank");
       return false
-    };
+    }
   }
   return true;
 }
@@ -79,15 +111,16 @@ function createItemsArray(kVocabArr, eVocabArr) {
   return items;
 }
 
+let continueEvent = true;
+
+
+
+
+
 const wrapper = document.getElementsByClassName('wrapper')[0];
 const startWrapper = document.getElementsByClassName('controls-container')[0];
 const wordListWrapper = document.querySelector(".wordListWrapper");
-btn1.addEventListener('click', function() {
-  vocabulary(); 
-  wordListWrapper.classList.add("hide");
-  startWrapper.classList.remove('hide');
-  wrapper.classList.remove("hide");
-});
+
 
 const moves = document.getElementById("moves-count");
 const timeValue = document.getElementById("time");

@@ -11,23 +11,23 @@
   <!---->
 
   <div class="wordListWrapper">
-    <p>Fill in the blanks with <input type="text" id="language1" placeholder="Korean"> and <input type="text" id="language2" placeholder="English"> vocabulary!</p>
-    <button type="button" value="Enter" id="button1">Next</button>
+    <p>Fill in the blanks with <input type="text" id="language1" placeholder="type a language"> and <input type="text" id="language2" placeholder="type a language"> vocabulary!</p>
+    <button type="button" value="Enter" id="nextBtn">Next</button>
     
-    <table class="hide">
+    <table id="table" class="hide">
       <tr class="tablesize">
          <!-- make korean, English into other language as well with js code -->
-        <th>Korean</th>
-        <th>English</th>
+        <th id="language1Header">Korean</th>
+        <th id="language2Header">English</th>
       </tr>
       <tr>
         <!-- It will be nice to input how many vocab you have learned -->
         <th>
-          <label for="koreanWordList"></label>
+          <label id="lang1Label" for=""></label>
           <div id="koreanWordList"></div>
         </th>
         <th>
-          <label for="englishWordList"></label>
+          <label id="lang2Label" for=""></label>
           <div id="englishWordList"></div>
         </th> 
       </tr>      
