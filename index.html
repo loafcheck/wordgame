@@ -8,20 +8,19 @@
   <title>FLIP</title>
 </head>
 <body>
-  <!---->
-
+  
+  <!-- The initial screen for users to input acquired vocabulary.-->
   <div class="wordListWrapper">
+    <!-- vocabulary in various languages.-->
     <p>Fill in the blanks with <input type="text" id="language1" placeholder="enter a language"> and <input type="text" id="language2" placeholder="enter a language"> vocabulary!</p>
     <button type="button" value="Enter" id="nextBtn">Next</button>
-    
+     <!-- table made according to input -->
     <table id="table" class="hide">
       <tr class="tablesize">
-         <!-- make korean, English into other language as well with js code -->
         <th id="language1Header">Korean</th>
         <th id="language2Header">English</th>
       </tr>
       <tr>
-        <!-- It will be nice to input how many vocab you have learned -->
         <th>
           <label id="lang1Label" for=""></label>
           <div id="koreanWordList"></div>
@@ -33,15 +32,16 @@
       </tr>      
     </table>
     <input type="button" value="Enter" id="button1" class="hide">
-
   </div>
   
 
   <!--game-->
   <div class="wrapper hide">
+    <p id="gameRule">Complete the game by matching all 6 sets of cards !</p>
     <div class="stats-container">
       <div id="moves-count"></div>
       <div id="time"></div>
+      <div id="flip"><span>Matched cards:</span> 0</div>
     </div>
     <div class="game-container"></div>
     <button id="stop" class="hide">Stop Game</button>

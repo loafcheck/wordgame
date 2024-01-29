@@ -13,6 +13,8 @@ const number = 12;
 let kVocabArr =[];
 let eVocabArr =[];
 
+
+// Two languages input from the user 
 nextBtn.addEventListener('click', function(){
   if (language1Input.value.trim() === '' || language2Input.value.trim() === '') {
     alert('Please fill in both language fields.');
@@ -55,7 +57,6 @@ nextBtn.addEventListener('click', function(){
 
 })
 
-
 btn1.addEventListener('click', function() {
   const vocabFilled = vocabulary();
   if(!vocabFilled) {
@@ -66,7 +67,7 @@ btn1.addEventListener('click', function() {
   wrapper.classList.remove("hide");
 });
 
-
+//input vocabulary from user
 function vocabulary () {
   kVocabArr = [];
   eVocabArr = [];
@@ -95,6 +96,7 @@ function NoneEmpty(array) {
   return true;
 }
 
+//item array create
 let items; 
 
 function createItemsArray(kVocabArr, eVocabArr) {
@@ -111,19 +113,12 @@ function createItemsArray(kVocabArr, eVocabArr) {
   return items;
 }
 
-let continueEvent = true;
-
-
-
-
-
 const wrapper = document.getElementsByClassName('wrapper')[0];
 const startWrapper = document.getElementsByClassName('controls-container')[0];
 const wordListWrapper = document.querySelector(".wordListWrapper");
-
-
 const moves = document.getElementById("moves-count");
 const timeValue = document.getElementById("time");
+const flippedCards = document.getElementById("flip");
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const gameContainer = document.querySelector(".game-container");
@@ -133,6 +128,7 @@ let cards;
 let interval;
 let firstCard = false;
 let secondCard = false;
+let continueEvent = true;
 
 //Items array
 
@@ -165,19 +161,17 @@ const movesCounter = () => {
   moves.innerHTML = `<span>Moves:</span>${movesCount}`;
 };
 
+
 //Pick random objects from the items array
 const generateRandom = (size = 4) => {
-  //temporary array
   let tempArray = [...items];
-  //initializes cardValues array
   let cardValues = [];
-  //size should be double (4*4 matrix)/2 since pairs of objects would exist
+ 
   size = (size * size) / 2;
-  //Random object selection
+ 
   for (let i = 0; i < size; i++) {
     const randomIndex = Math.floor(Math.random() * tempArray.length);
     cardValues.push(tempArray[randomIndex]);
-    //once selected remove the object from temp array
     tempArray.splice(randomIndex, 1);
   }
   
@@ -212,39 +206,32 @@ const matrixGenerator = (cardValues, size = 4) => {
   cards = document.querySelectorAll(".card-container");
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      //If selected card is not matched yet then only run (i.e already matched card when clicked would be ignored)
+     
       if (!card.classList.contains("matched")) {
-        //flip the cliked card
-        card.classList.add("flipped");
-        //if it is the firstcard (!firstCard since firstCard is initially false)
+          card.classList.add("flipped");
         if (!firstCard) {
-          //so current card will become firstCard
-          firstCard = card;
-          //current cards value becomes firstCardValue
-          firstCardValue = card.getAttribute("data-card-value");
+           firstCard = card;
+           firstCardValue = card.getAttribute("data-card-value");
         } else {
-          //increment moves since user selected second card
+        
           movesCounter();
-          //secondCard and value
+   
           secondCard = card;
           let secondCardValue = card.getAttribute("data-card-value");
           if (firstCardValue == secondCardValue) {
-            //if both cards match add matched class so these cards would beignored next time
             firstCard.classList.add("matched");
             secondCard.classList.add("matched");
-            //set firstCard to false since next card would be first now
             firstCard = false;
-            //winCount increment as user found a correct match
             winCount += 1;
-            //check if winCount ==half of cardValues
+   
+            flippedCards.innerHTML=`<span>Matched cards:</span> ${winCount}`
+         8
             if (winCount == Math.floor(cardValues.length / 2)) {
               result.innerHTML = `<h2>You Won</h2>
             <h4>Moves: ${movesCount}</h4>`;
               stopGame();
             }
           } else {
-            //if the cards dont match
-            //flip the cards back to normal
             let [tempFirst, tempSecond] = [firstCard, secondCard];
             firstCard = false;
             secondCard = false;
