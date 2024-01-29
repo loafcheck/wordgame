@@ -1,6 +1,6 @@
 # FLIP
 
-[FLIP-Website](https://loafcheck.github.io/FLIP/)
+[Let's play FLIP ! ](https://loafcheck.github.io/FLIP/)
 
 A simple memory matching game built with HTML, CSS, and JavaScript.
 FLIP challenges players to match pairs of vocabulary words between two languages. The objective is to uncover all matching pairs within the grid by flipping cards and making successful matches while keeping track of time and the number of moves. The game aims to test and enhance memory and language skills in an engaging way.
