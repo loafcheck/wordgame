@@ -1,8 +1,8 @@
 # FLIP
-•  As an English tutor, I needed a tool to input custom vocabulary and create engaging learning games. Since most existing language games online only offer preset words, I developed FLIP from scratch using HTML, CSS, and JavaScript to address this need
- • Developed a dynamic UI that allows users to input unlimited words and interact with them through flipping cards 
-• Integrated a timer using setInterval to monitor game duration
-• Implemented an algorithm to shuffle cards and randomize their grid positions, ensuring a unique layout for each game
+•  As an English tutor, I needed a tool to input custom vocabulary and create engaging learning games. Since most existing language games online only offer preset words, I developed FLIP from scratch using HTML, CSS, and JavaScript to address this need <br/>
+• Developed a dynamic UI that allows users to input unlimited words and interact with them through flipping cards <br/>
+• Integrated a timer using setInterval to monitor game duration<br/>
+• Implemented an algorithm to shuffle cards and randomize their grid positions, ensuring a unique layout for each game<br/>
 
 
 ## Table of Contents
