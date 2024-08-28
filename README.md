@@ -1,9 +1,9 @@
 # FLIP
+•  As an English tutor, I needed a tool to input custom vocabulary and create engaging learning games. Since most existing language games online only offer preset words, I developed FLIP from scratch using HTML, CSS, and JavaScript to address this need
+ • Developed a dynamic UI that allows users to input unlimited words and interact with them through flipping cards 
+• Integrated a timer using setInterval to monitor game duration
+• Implemented an algorithm to shuffle cards and randomize their grid positions, ensuring a unique layout for each game
 
-[Let's play FLIP](https://loafcheck.github.io/FLIP/)
-
-A simple memory matching game built with HTML, CSS, and JavaScript.
-FLIP challenges players to match pairs of vocabulary words between two languages. The objective is to uncover all matching pairs within the grid by flipping cards and making successful matches while keeping track of time and the number of moves. The game aims to test and enhance memory and language skills in an engaging way.
 
 ## Table of Contents
 
@@ -11,6 +11,8 @@ FLIP challenges players to match pairs of vocabulary words between two languages
 - [Game Preview](#cGame-Previewg)
 
 ## How to Play
+
+[Let's play FLIP](https://loafcheck.github.io/FLIP/)
 
 Follow these steps to enjoy the Memory Matching Game:
 
