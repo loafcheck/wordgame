@@ -9,10 +9,9 @@
 
 - [How to Play](#how-to-play)
 - [Game Preview](#cGame-Previewg)
+- [Let's play FLIP](#Let's-Play-FLIP)
 
 ## How to Play
-
-[Let's play FLIP](https://loafcheck.github.io/FLIP/)
 
 Follow these steps to enjoy the Memory Matching Game:
 
@@ -40,3 +39,6 @@ Follow these steps to enjoy the Memory Matching Game:
 ![Image1](./assets/flip3.png)
 ![Image1](./assets/flip4.png)
 ![Image1](./assets/flip5.png)
+
+## Let's Play FLIP
+[Let's play FLIP](https://loafcheck.github.io/FLIP/)
